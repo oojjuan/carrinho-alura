@@ -15,6 +15,10 @@ _____________
 .appendChild('elemento') -> insere o elemento que está dentro do parênteses dentro do elemento especificado
 */
 
+const listaComprados = document.getElementById("lista-comprados");
+const listaDeCompras = document.getElementById("lista-de-compras");
+let contador = 0;
+
 // Função que cria elemento da lista de compras
 export function criarItemLista(item) {
     // Variável que cria um elemento 'li'
@@ -45,7 +49,7 @@ export function criarItemLista(item) {
     checkboxLabel.setAttribute("for", checkboxInput.id);
 
     // Cria um evento que acontece toda vez que o 'checkbox' for clicado
-    checkboxLabel.addEventListener("click", function (evento) {
+    checkboxLabel.addEventListener("click", function(evento) {
         const checkboxInput = evento.currentTarget.querySelector(".input-checkbox");
         const checkboxCustomizado = evento.currentTarget.querySelector(".checkbox-customizado");
         // Ao acionar o 'checkbox', procura o 'li' mais próximo dele e após isso ele procura DENTRO deste 'li' a tag com ID de 'item-titulo' -- por fim, salva o nome dentro da 'tag' e armazena na variável
@@ -80,7 +84,7 @@ export function criarItemLista(item) {
     // Modifica a 'id' do nome do item para 'item-titulo'
     nomeDoItem.id = "item-titulo";
     // Modifica o texto do item para o 'valor' do parâmetro da função
-    nomeDoItem.innerText = item.value;
+    nomeDoItem.innerText = item;
     // Nome do item entra dentro do container do item
     containerNomeDoItem.appendChild(nomeDoItem)
 
