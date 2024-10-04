@@ -64,11 +64,6 @@ p {
     text-align: left;
 }
 
-#mensagem-lista-vazia {
-    display: block;
-    margin-bottom: 10px;
-}
-
 .input-item {
     display: block;
     padding: 12px 16px;
@@ -95,6 +90,10 @@ p {
     border-radius: 24px;
     background-color: $primaria;
     padding: 12px 16px;
+    &:hover {
+        background-color: $secundaria;
+        cursor: pointer;
+    }
 }
 
 form {
@@ -157,6 +156,9 @@ ul {
 .item-lista-button {
     border: none;
     background-color: transparent;
+    &:hover {
+        cursor: pointer;
+    }
 }
 
 .container-lista {

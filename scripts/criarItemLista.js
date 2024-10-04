@@ -15,6 +15,11 @@ _____________
 .appendChild('elemento') -> insere o elemento que está dentro do parênteses dentro do elemento especificado
 */
 
+import { editarItem } from "./editarItem.js";
+import { excluirItem } from "./excluirItem.js";
+import { gerarDiaDaSemana } from "./informarData.js";
+import { verificarListaComprados } from "./verificarListaComprados.js";
+
 const listaComprados = document.getElementById("lista-comprados");
 const listaDeCompras = document.getElementById("lista-de-compras");
 let contador = 0;
@@ -64,6 +69,8 @@ export function criarItemLista(item) {
             itemTitulo.style.textDecoration = "none";
             listaDeCompras.appendChild(itemDaLista)
         }
+        
+        verificarListaComprados(listaComprados)
     })
     
     // Variável que cria uma 'div' -- responsável pelo checkbox customizado
@@ -96,6 +103,10 @@ export function criarItemLista(item) {
     imagemRemover.src = "img/delete.svg";
     imagemRemover.alt = "Remover";
 
+    botaoRemover.addEventListener("click", function () {
+        excluirItem(itemDaLista);
+    })
+
     botaoRemover.appendChild(imagemRemover);
     containerBotoes.appendChild(botaoRemover);
 
@@ -106,6 +117,10 @@ export function criarItemLista(item) {
     imagemEditar.src = "img/edit.svg";
     imagemEditar.alt = "Editar";
 
+    botaoEditar.addEventListener("click", function() {
+        editarItem(itemDaLista);
+    })
+
     botaoEditar.appendChild(imagemEditar);
     containerBotoes.appendChild(botaoEditar);
 
@@ -113,7 +128,7 @@ export function criarItemLista(item) {
     containerItemLista.appendChild(containerBotoes);
 
     const itemData = document.createElement("p");
-    itemData.innerText = `${new Date().toLocaleDateString("pt-BR", { weekday: "long" })} (${new Date().toLocaleDateString()}) às ${new Date().toLocaleTimeString("pt-BR", { hour: "numeric", minute: "numeric" })}`;
+    itemData.innerText = gerarDiaDaSemana();
     itemData.classList.add("texto-data");
 
     itemDaLista.appendChild(containerItemLista);
